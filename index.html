@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Révisions Supply Chain</title>
+  <style>
+    :root { --red:#e2231a; --ink:#172033; --muted:#657085; --bg:#f3f5f8; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; font-family:Arial, Helvetica, sans-serif; color:var(--ink); background:radial-gradient(circle at 12% 0,#fff 0,transparent 31%),var(--bg); }
+    main { width:min(850px,calc(100% - 32px)); margin:0 auto; padding:55px 0 42px; }
+    header { text-align:center; margin-bottom:36px; }
+    h1 { font-size:clamp(2rem,6vw,3.2rem); margin:0 0 12px; line-height:1.1; }
+    header p { margin:0; color:var(--muted); font-size:1.06rem; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    a.card { display:flex; flex-direction:column; justify-content:space-between; min-height:175px; padding:25px; text-decoration:none; color:var(--ink); background:#fff; border-radius:18px; box-shadow:0 8px 27px #18203318; transition:transform .16s ease, box-shadow .16s ease; }
+    a.card:hover { transform:translateY(-4px); box-shadow:0 14px 31px #18203324; }
+    a.card:focus-visible { outline:3px solid #245ec9; outline-offset:3px; }
+    .tag { color:var(--red); text-transform:uppercase; letter-spacing:.12em; font-weight:700; font-size:.72rem; }
+    h2 { margin:13px 0 18px; font-size:1.35rem; line-height:1.22; }
+    .open { color:var(--red); font-weight:700; }
+    footer { margin-top:31px; text-align:center; color:var(--muted); font-size:.9rem; }
+    @media(max-width:600px) { main { width:min(100% - 24px,850px); padding-top:35px; } .grid { grid-template-columns:1fr; } a.card { min-height:150px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Révisions Supply Chain</h1>
+      <p>Choisissez un thème pour réviser avec des fiches interactives.</p>
+    </header>
+    <section class="grid" aria-label="Thèmes de révision">
+      <a class="card" href="veille-strategique-supply-chain.html">
+        <span class="tag">Thème 1</span><h2>Veille stratégique Supply Chain</h2><span class="open">Ouvrir les fiches →</span>
+      </a>
+      <a class="card" href="signaux-faibles.html">
+        <span class="tag">Thème 2</span><h2>Signaux faibles et tendances structurantes</h2><span class="open">Ouvrir les fiches →</span>
+      </a>
+      <a class="card" href="collecte-veille.html">
+        <span class="tag">Thème 3</span><h2>Collecte, qualification et exploitation des données de veille</h2><span class="open">Ouvrir les fiches →</span>
+      </a>
+      <a class="card" href="analyse-concurrentielle.html">
+        <span class="tag">Thème 4</span><h2>Analyse concurrentielle et positionnement stratégique</h2><span class="open">Ouvrir les fiches →</span>
+      </a>
+    </section>
+    <footer>Fiches de révision Supply Chain</footer>
+  </main>
+</body>
+</html>
