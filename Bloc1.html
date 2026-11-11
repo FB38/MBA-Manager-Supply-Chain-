@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLOC 1 - Thèmes d'apprentissage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --blue-primary: #0088ce;
+      --orange-accent: #f59e0b;
+      --red-badge: #e11d48;
+      --border-color: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      padding: 40px 20px;
+    }
+    .wrap { max-width: 1200px; margin: 0 auto; }
+    
+    /* Breadcrumb / Top navigation */
+    .breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      transition: color 0.15s;
+    }
+    .breadcrumb:hover { color: var(--blue-primary); }
+    .breadcrumb svg { width: 16px; height: 16px; }
+
+    .bloc-title-banner {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    .bloc-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--blue-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    h1 { font-size: 1.4rem; font-weight: 800; line-height: 1.3; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 20px -8px rgba(0,0,0,0.08), 0 4px 12px -2px rgba(0,0,0,0.03);
+      border-color: #cbd5e1;
+    }
+    .image-container {
+      width: 100%;
+      height: 140px;
+      position: relative;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .image-container svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .badge-indispensable {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--red-badge);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .theme-number {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(15, 23, 42, 0.8);
+      color: white;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+    .card-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .card-date {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .footer-pill {
+      align-self: flex-start;
+      background-color: #fff7ed;
+      border: 1px solid #ffedd5;
+      color: #ea580c;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+    .footer-pill.blue {
+      background-color: #f0f9ff;
+      border: 1px solid #e0f2fe;
+      color: #0369a1;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    
+    <a href="index.html" class="breadcrumb">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Retour aux matières
+    </a>
+
+    <div class="bloc-title-banner">
+      <div class="bloc-tag">BLOC 1</div>
+      <h1>Définir des orientations stratégiques et opérationnelles de la chaîne logistique</h1>
+    </div>
+    
+    <div class="grid">
+      <!-- Theme 1 -->
+      <a href="#" class="card" onclick="alert('Ce thème sera bientôt disponible !'); return false;">
+        <div class="theme-number">1</div>
+        <div class="image-container"><svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ts1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#d97706"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#ts1)"/><g fill="rgba(255,255,255,0.25)" stroke="#ffffff" stroke-width="2"><rect x="160" y="110" width="80" height="30" rx="4"/><rect x="180" y="75" width="40" height="30" rx="4"/><circle cx="200" cy="45" r="15"/></g></svg></div>
+        <div class="card-content">
+          <h2 class="card-title">Mes soft skills professionnelles</h2>
+          <div class="card-date">Du 07/10/2026 au 19/10/2026</div>
+          <span class="footer-pill">5 thèmes</span>
+        </div>
+      </a>
+
+      <!-- Theme 2 -->
+      <a href="#" class="card" onclick="alert('Ce thème sera bientôt disponible !'); return false;">
+        <div class="theme-number">2</div>
+        <div class="image-container"><svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ts2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#1d4ed8"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#ts2)"/><g stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"><rect x="50" y="30" width="300" height="120" rx="8"/><line x1="50" y1="70" x2="350" y2="70"/><line x1="50" y1="110" x2="350" y2="110"/><line x1="150" y1="30" x2="150" y2="150"/><line x1="250" y1="30" x2="250" y2="150"/></g><circle cx="150" cy="70" r="12" fill="#ffffff"/><circle cx="250" cy="110" r="12" fill="#ffffff" opacity="0.8"/></svg></div>
+        <div class="card-content">
+          <h2 class="card-title">Cartographier mon entreprise et mon poste</h2>
+          <div class="card-date">Du 07/10/2026 au 01/11/2026</div>
+          <span class="footer-pill">5 thèmes</span>
+        </div>
+      </a>
+
+      <!-- Theme 3 (ACTIVE - links to lessons) -->
+      <a href="theme-veille-strategique.html" class="card">
+        <div class="theme-number">3</div>
+        <div class="badge-indispensable">Contient des indispensables</div>
+        <div class="image-container"><svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ts3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#6d28d9"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#ts3)"/><circle cx="200" cy="90" r="60" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/><circle cx="200" cy="90" r="40" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><circle cx="200" cy="90" r="20" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1"/><line x1="200" y1="30" x2="200" y2="150" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/><line x1="140" y1="90" x2="260" y2="90" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/><line x1="200" y1="90" x2="245" y2="45" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/><circle cx="245" cy="45" r="4" fill="#ffffff"/></svg></div>
+        <div class="card-content">
+          <h2 class="card-title">Piloter la veille stratégique et prospective de la chaîne logistique</h2>
+          <div class="card-date">Du 07/10/2026 au 18/12/2026</div>
+          <span class="footer-pill">8 thèmes</span>
+        </div>
+      </a>
+
+      <!-- Theme 4 -->
+      <a href="#" class="card" onclick="alert('Ce thème sera bientôt disponible !'); return false;">
+        <div class="theme-number">4</div>
+        <div class="badge-indispensable">Contient des indispensables</div>
+        <div class="image-container"><svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ts4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ec4899"/><stop offset="100%" stop-color="#be185d"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#ts4)"/><rect x="60" y="40" width="130" height="45" rx="6" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/><rect x="210" y="40" width="130" height="45" rx="6" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/><rect x="60" y="95" width="130" height="45" rx="6" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/><rect x="210" y="95" width="130" height="45" rx="6" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/><text x="125" y="68" fill="#ffffff" font-weight="bold" font-size="16" text-anchor="middle">S</text><text x="275" y="68" fill="#ffffff" font-weight="bold" font-size="16" text-anchor="middle">W</text><text x="125" y="123" fill="#ffffff" font-weight="bold" font-size="16" text-anchor="middle">O</text><text x="275" y="123" fill="#ffffff" font-weight="bold" font-size="16" text-anchor="middle">T</text></svg></div>
+        <div class="card-content">
+          <h2 class="card-title">Élaborer le diagnostic stratégique de la chaîne logistique</h2>
+          <div class="card-date">Du 18/12/2026 au 16/02/2027</div>
+          <span class="footer-pill">8 thèmes</span>
+        </div>
+      </a>
+
+      <!-- Theme 5 -->
+      <a href="#" class="card" onclick="alert('Ce thème sera bientôt disponible !'); return false;">
+        <div class="theme-number">5</div>
+        <div class="badge-indispensable">Contient des indispensables</div>
+        <div class="image-container"><svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ts5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#06b6d4"/><stop offset="100%" stop-color="#0891b2"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#ts5)"/><g stroke="rgba(255,255,255,0.4)" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M60,90 C120,90 140,50 200,50 C260,50 280,90 340,90"/><path d="M140,90 C160,130 200,130 240,130 C280,130 300,90 340,90"/><line x1="60" y1="90" x2="340" y2="90" stroke-dasharray="5,5"/></g><circle cx="60" cy="90" r="8" fill="#ffffff"/><circle cx="200" cy="50" r="6" fill="#ffffff"/><circle cx="200" cy="130" r="6" fill="#ffffff"/><circle cx="340" cy="90" r="8" fill="#ffffff"/></svg></div>
+        <div class="card-content">
+          <h2 class="card-title">Modéliser des scénarios logistiques et planifier les ressources</h2>
+          <div class="card-date">Du 16/02/2027 au 17/04/2027</div>
+          <span class="footer-pill">8 thèmes</span>
+        </div>
+      </a>
+
+      <!-- Theme 6 -->
+      <a href="#" class="card" onclick="alert('Ce thème sera bientôt disponible !'); return false;">
+        <div class="theme-number">6</div>
+        <div class="badge-indispensable">Contient des indispensables</div>
+        <div class="image-container"><svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ts6" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#047857"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#ts6)"/><g fill="rgba(255,255,255,0.25)" stroke="#ffffff" stroke-width="1.5"><rect x="100" y="60" width="50" height="50" rx="4"/><rect x="175" y="60" width="50" height="50" rx="4"/><rect x="250" y="60" width="50" height="50" rx="4"/><line x1="125" y1="40" x2="125" y2="60"/><line x1="200" y1="40" x2="200" y2="60"/><line x1="275" y1="40" x2="275" y2="60"/><line x1="80" y1="40" x2="320" y2="40"/></g></svg></div>
+        <div class="card-content">
+          <h2 class="card-title">Définir la politique d'approvisionnement et de gestion des stocks</h2>
+          <div class="card-date">Du 17/04/2027 au 20/05/2027</div>
+          <span class="footer-pill">8 thèmes</span>
+        </div>
+      </a>
+
+      <!-- Theme 7 -->
+      <a href="#" class="card" onclick="alert('Ce thème sera bientôt disponible !'); return false;">
+        <div class="theme-number">7</div>
+        <div class="badge-indispensable">Contient des indispensables</div>
+        <div class="image-container"><svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ts7" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#4338ca"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#ts7)"/><g fill="rgba(255,255,255,0.3)" stroke="#ffffff" stroke-width="1.5"><rect x="100" y="100" width="50" height="50" rx="2"/><rect x="175" y="70" width="50" height="80" rx="2"/><rect x="250" y="40" width="50" height="110" rx="2"/></g><path d="M125,90 L200,60 L275,30" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/><circle cx="275" cy="30" r="5" fill="#ffffff"/></svg></div>
+        <div class="card-content">
+          <h2 class="card-title">Présenter et défendre la stratégie globale de la chaîne logistique</h2>
+          <div class="card-date">Du 20/05/2027 au 14/06/2027</div>
+          <span class="footer-pill">8 thèmes</span>
+        </div>
+      </a>
+
+      <!-- Theme 8 -->
+      <a href="#" class="card" onclick="alert('Ce thème sera bientôt disponible !'); return false;">
+        <div class="theme-number">8</div>
+        <div class="image-container"><svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ts8" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#14b8a6"/><stop offset="100%" stop-color="#0d9488"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#ts8)"/><line x1="60" y1="120" x2="340" y2="120" stroke="rgba(255,255,255,0.4)" stroke-width="3"/><g fill="#ffffff"><circle cx="100" cy="120" r="8"/><circle cx="200" cy="120" r="8"/><circle cx="300" cy="120" r="8"/><path d="M100,120 L100,70 L130,80 L100,90" stroke="#ffffff" stroke-width="2" fill="rgba(255,255,255,0.4)"/><path d="M200,120 L200,70 L230,80 L200,90" stroke="#ffffff" stroke-width="2" fill="rgba(255,255,255,0.4)"/><path d="M300,120 L300,70 L330,80 L300,90" stroke="#ffffff" stroke-width="2" fill="rgba(255,255,255,0.4)"/></g></svg></div>
+        <div class="card-content">
+          <h2 class="card-title">Mes jalons de formation et points d'étape</h2>
+          <div class="card-date">Du 07/10/2026 au 13/11/2026</div>
+          <span class="footer-pill">3 thèmes</span>
+        </div>
+      </a>
+    </div>
+  </main>
+</body>
+</html>
