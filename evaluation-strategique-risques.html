@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Évaluation stratégique des risques – Cartes</title>
+<style>
+.flashcards{--c1:#0C131F;--c2:#0088CE;--bg:#F2F2F2;font-family:Avenir,"Segoe UI",Arial,sans-serif;max-width:1100px;margin:0 auto;padding:24px;color:var(--c1)}
+.flashcards h1{font-size:1.6rem;margin:0 0 4px}
+.flashcards .intro{margin:0 0 16px;color:#555}
+.flashcards .tools{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.flashcards .tools button{border:2px solid var(--c2);background:#fff;color:var(--c2);border-radius:6px;padding:8px 14px;font-weight:600;cursor:pointer}
+.flashcards .tools button:hover{background:var(--c2);color:#fff}
+.flashcards .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.flashcards .card{all:unset;cursor:pointer;perspective:1000px;height:190px;display:block}
+.flashcards .card:focus-visible .inner{outline:3px solid var(--c2);outline-offset:3px;border-radius:12px}
+.flashcards .inner{position:relative;display:block;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flashcards .card.flipped .inner{transform:rotateY(180deg)}
+.flashcards .face{position:absolute;inset:0;border-radius:12px;padding:18px;box-sizing:border-box;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.flashcards .front{background:var(--c1);color:#fff;justify-content:center;align-items:center;text-align:center}
+.flashcards .num{position:absolute;top:12px;left:14px;font-size:.8rem;opacity:.6}
+.flashcards .term{font-size:1.2rem;font-weight:700;line-height:1.3}
+.flashcards .hint{position:absolute;bottom:12px;font-size:.75rem;opacity:.6}
+.flashcards .back{background:#fff;border-top:6px solid var(--c2);transform:rotateY(180deg);justify-content:center}
+.flashcards .term-sm{font-size:.8rem;font-weight:700;color:var(--c2);text-transform:uppercase;margin-bottom:8px}
+.flashcards .def{font-size:1rem;line-height:1.45}
+@media (prefers-reduced-motion:reduce){.flashcards .inner{transition:none}}
+</style>
+</head>
+<body style="margin:0;background:#F2F2F2">
+<section class="flashcards" id="flashcards">
+  <h1>Évaluation stratégique des risques</h1>
+  <p class="intro">15 notions clés. Cliquez sur une carte (ou appuyez sur Entrée) pour afficher sa définition.</p>
+  <div class="tools">
+    <button type="button" data-act="all">Tout retourner</button>
+    <button type="button" data-act="reset">Tout remettre au recto</button>
+    <button type="button" data-act="shuffle">Mélanger</button>
+  </div>
+  <div class="grid">
+    <button class="card" type="button" aria-pressed="false" aria-label="Cartographie des risques : afficher la définition">
+      <span class="inner">
+        <span class="face front"><span class="num">01</span><span class="term">Cartographie des risques</span><span class="hint">Cliquer pour retourner</span></span>
+        <span class="face back"><span class="term-sm">Cartographie des risques</span><span class="def">Vision structurée des menaces et des opportunités pour la supply chain.</span></span>
+      </span>
+    </button>
+    <button class="card" type="button" aria-pressed="false" aria-label="Matrice probabilité-impact : afficher la définition">
+      <span class="inner">
+        <span class="face front"><span class="num">02</span><span class="term">Matrice probabilité-impact</span><span class="hint">Cliquer pour retourner</span></span>
+        <span class="face back"><span class="term-sm">Matrice probabilité-impact</span><span class="def">Outil qui classe les enjeux selon leur probabilité et leur impact.</span></span>
+      </span>
+    </button>
+    <button class="card" type="button" aria-pressed="false" aria-label="Risque endogène : afficher la définition">
+      <span class="inner">
+        <span class="face front"><span class="num">03</span><span class="term">Risque endogène</span><span class="hint">Cliquer pour retourner</span></span>
+        <span class="face back"><span class="term-sm">Risque endogène</span><span class="def">Risque interne que l’entreprise peut davantage maîtriser.</span></span>
+      </span>
+    </button>
+    <button class="card" type="button" aria-pressed="false" aria-label="Risque exogène : afficher la définition">
+      <span class="inner">
+        <span class="face front"><span class="num">04</span><span class="term">Risque exogène</span><span class="hint">Cliquer pour retourner</span></span>
+        <span class="face back"><span class="term-sm">Risque exogène</span><span class="def">Risque externe qui demande surtout une adaptation.</span></span>
+      </span>
+    </button>
+    <button class="card" type="button" aria-pressed="false" aria-label="Effet de cascade : afficher la définition">
+      <span class="inner">
+        <span class="face front"><span class="num">05</span><span class="term">Effet de cascade</span><span class="hint">Cliquer pour retourner</span></span>
+        <span class="face back"><span class="term-sm">Effet de cascade</span><span class="def">Propagation d’un risque initial vers plusieurs autres risques.</span></span>
+      </span>
+    </button>
+    <button class="card" type="button" aria-pressed="false" aria-label="Diagnostic stratégique : afficher la définition">
+      <span class="inner">
+        <span class="face front"><span class="num">06</span><span class="term">Diagnostic stratégique</span><span class="hint">Cliquer pour retourner</span></span>
+        <span class="face back"><span class="term-sm">Diagnostic stratégique</span><span class="def">Interprétation des risques pour guider une décision d’action.</span></span>
+      </span>
+    </button>
+    <button class="card" type="button" aria-pressed="false" aria-label="Scénario d’évolution : afficher la définition">
+      <span class="inner">
+        <span class="face front"><span class="num">07</span><span class="term">Scénario d’évolution</span><span class="hint">Cliquer pour retourner</span></span>
+        <span class="face back"><span class="term-sm">Scénario d’évolution</span><span class="def">Combinaison cohérente de tendances et de ruptures possibles.</span></span>
+      </span>
+    </button>
+    <button class="card" type="button" aria-pressed="false" aria-label="Stratégie défensive : afficher la définition">
+      <span class="inner">
+        <span class="face front"><span class="num">08</span><span class="term">Stratégie défensive</span><span class="hint">Cliquer pour retourner</span></span>
+        <span class="face back"><span class="term-sm">Stratégie défensive</span><span class="def">Posture qui sécurise d’abord la continuité opérationnelle.</span></span>
+      </span>
+    </button>
+    <button class="card" type="button" aria-pressed="false" aria-label="Stratégie offensive : afficher la définition">
+      <span class="inner">
+        <span class="face front"><span class="num">09</span><span class="term">Stratégie offensive</span><span class="hint">Cliquer pour retourner</span></span>
+        <span class="face back"><span class="term-sm">Stratégie offensive</span><span class="def">Posture qui transforme une contrainte en avantage concurrentiel.</span></span>
+      </span>
+    </button>
+    <button class="card" type="button" aria-pressed="false" aria-label="Note de recommandation : afficher la définition">
+      <span class="inner">
+        <span class="face front"><span class="num">10</span><span class="term">Note de recommandation</span><span class="hint">Cliquer pour retourner</span></span>
+        <span class="face back"><span class="term-sm">Note de recommandation</span><span class="def">Document qui présente une analyse et conduit à une décision.</span></span>
+      </span>
+    </button>
+    <button class="card" type="button" aria-pressed="false" aria-label="Indicateur avancé : afficher la définition">
+      <span class="inner">
+        <span class="face front"><span class="num">11</span><span class="term">Indicateur avancé</span><span class="hint">Cliquer pour retourner</span></span>
+        <span class="face back"><span class="term-sm">Indicateur avancé</span><span class="def">Signal précurseur d’une évolution probable.</span></span>
+      </span>
+    </button>
+    <button class="card" type="button" aria-pressed="false" aria-label="Déclencheur de réévaluation : afficher la définition">
+      <span class="inner">
+        <span class="face front"><span class="num">12</span><span class="term">Déclencheur de réévaluation</span><span class="hint">Cliquer pour retourner</span></span>
+        <span class="face back"><span class="term-sm">Déclencheur de réévaluation</span><span class="def">Seuil qui impose une mise à jour de la cartographie.</span></span>
+      </span>
+    </button>
+    <button class="card" type="button" aria-pressed="false" aria-label="Prospective : afficher la définition">
+      <span class="inner">
+        <span class="face front"><span class="num">13</span><span class="term">Prospective</span><span class="hint">Cliquer pour retourner</span></span>
+        <span class="face back"><span class="term-sm">Prospective</span><span class="def">Démarche qui explore les ruptures possibles à venir.</span></span>
+      </span>
+    </button>
+    <button class="card" type="button" aria-pressed="false" aria-label="Zone rouge : afficher la définition">
+      <span class="inner">
+        <span class="face front"><span class="num">14</span><span class="term">Zone rouge</span><span class="hint">Cliquer pour retourner</span></span>
+        <span class="face back"><span class="term-sm">Zone rouge</span><span class="def">Enjeu prioritaire nécessitant une action immédiate.</span></span>
+      </span>
+    </button>
+    <button class="card" type="button" aria-pressed="false" aria-label="Zone orange : afficher la définition">
+      <span class="inner">
+        <span class="face front"><span class="num">15</span><span class="term">Zone orange</span><span class="hint">Cliquer pour retourner</span></span>
+        <span class="face back"><span class="term-sm">Zone orange</span><span class="def">Enjeu à surveiller activement avec un plan de contingence.</span></span>
+      </span>
+    </button>
+  </div>
+</section>
+<script>
+(function(){
+  var root=document.getElementById('flashcards'),grid=root.querySelector('.grid');
+  function set(c,f){c.classList.toggle('flipped',f);c.setAttribute('aria-pressed',f);}
+  grid.addEventListener('click',function(e){var c=e.target.closest('.card');if(c)set(c,!c.classList.contains('flipped'));});
+  root.querySelector('.tools').addEventListener('click',function(e){
+    var a=e.target.getAttribute('data-act'),cs=[].slice.call(grid.children);if(!a)return;
+    if(a==='all')cs.forEach(function(c){set(c,true)});
+    if(a==='reset')cs.forEach(function(c){set(c,false)});
+    if(a==='shuffle'){cs.forEach(function(c){set(c,false)});for(var i=cs.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));grid.appendChild(cs[j]);cs.splice(j,1);}grid.appendChild(cs[0]);}
+  });
+})();
+</script>
+</body>
+</html>
