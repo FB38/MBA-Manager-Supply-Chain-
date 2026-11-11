@@ -1,49 +1,631 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Révisions Supply Chain</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MBA Manager Supply Chain - Accueil</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
-    :root { --red:#e2231a; --ink:#172033; --muted:#657085; --bg:#f3f5f8; }
-    * { box-sizing:border-box; }
-    body { margin:0; min-height:100vh; font-family:Arial, Helvetica, sans-serif; color:var(--ink); background:radial-gradient(circle at 12% 0,#fff 0,transparent 31%),var(--bg); }
-    main { width:min(850px,calc(100% - 32px)); margin:0 auto; padding:55px 0 42px; }
-    header { text-align:center; margin-bottom:36px; }
-    h1 { font-size:clamp(2rem,6vw,3.2rem); margin:0 0 12px; line-height:1.1; }
-    header p { margin:0; color:var(--muted); font-size:1.06rem; }
-    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
-    a.card { display:flex; flex-direction:column; justify-content:space-between; min-height:175px; padding:25px; text-decoration:none; color:var(--ink); background:#fff; border-radius:18px; box-shadow:0 8px 27px #18203318; transition:transform .16s ease, box-shadow .16s ease; }
-    a.card:hover { transform:translateY(-4px); box-shadow:0 14px 31px #18203324; }
-    a.card:focus-visible { outline:3px solid #245ec9; outline-offset:3px; }
-    .tag { color:var(--red); text-transform:uppercase; letter-spacing:.12em; font-weight:700; font-size:.72rem; }
-    h2 { margin:13px 0 18px; font-size:1.35rem; line-height:1.22; }
-    .open { color:var(--red); font-weight:700; }
-    footer { margin-top:31px; text-align:center; color:var(--muted); font-size:.9rem; }
-    @media(max-width:600px) { main { width:min(100% - 24px,850px); padding-top:35px; } .grid { grid-template-columns:1fr; } a.card { min-height:150px; } }
+    :root {
+      --bg-color: #f6f8fa;
+      --card-bg: #ffffff;
+      --text-main: #1f2937;
+      --text-muted: #6b7280;
+      --purple-primary: #7c3aed;
+      --purple-light: #f5f3ff;
+      --green-status: #10b981;
+      --green-light: #ecfdf5;
+      --orange-status: #f59e0b;
+      --orange-light: #fffbeb;
+      --red-badge: #e11d48;
+      --border-color: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      padding: 40px 20px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* Top Breadcrumbs / Navigation Info */
+    .bloc-header {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border: 1px solid var(--border-color);
+    }
+
+    .bloc-title-small {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--purple-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .bloc-title-main {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    /* Main Section Theme */
+    .theme-section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      border: 1px solid var(--border-color);
+    }
+
+    .theme-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .theme-info-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Progress Circular Icon styling */
+    .progress-circle-container {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      flex-shrink: 0;
+    }
+
+    .progress-circle-svg {
+      transform: rotate(-90deg);
+      width: 60px;
+      height: 60px;
+    }
+
+    .progress-circle-bg {
+      fill: none;
+      stroke: #e5e7eb;
+      stroke-width: 5;
+    }
+
+    .progress-circle-bar {
+      fill: none;
+      stroke: #8b5cf6;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-dasharray: 157; /* 2 * pi * r = 2 * 3.14 * 25 = 157 */
+      stroke-dashoffset: 52.3; /* 1/3 remaining -> 2/3 complete = 104.7 filled, dashoffset = 157 - 104.7 = 52.3 */
+    }
+
+    .progress-center-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 32px;
+      height: 32px;
+      background: #7c3aed;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .progress-center-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .theme-title-area {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .theme-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.3;
+    }
+
+    .theme-progress-text {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #4b5563;
+      margin-top: 4px;
+    }
+
+    .theme-progress-text span {
+      color: var(--purple-primary);
+      font-weight: 700;
+    }
+
+    .theme-meta-right {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Lessons / Modules List */
+    .lessons-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .lesson-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px 24px;
+      transition: all 0.2s ease-in-out;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .lesson-row:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border-color: #cbd5e1;
+    }
+
+    .lesson-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex: 1;
+      min-width: 0; /* Prevents overflow of text in flexbox */
+    }
+
+    /* Circle Icons */
+    .icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .icon-circle.purple {
+      background-color: #f3e8ff;
+      color: #7c3aed;
+    }
+
+    .icon-circle.green {
+      background-color: #d1fae5;
+      color: #10b981;
+    }
+
+    .icon-circle.dark {
+      background-color: #0f172a;
+      color: #ffffff;
+    }
+
+    .icon-circle svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .lesson-details {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .lesson-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.4;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Wrap text nicely on smaller screens */
+    @media (max-width: 768px) {
+      .lesson-title {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+      }
+    }
+
+    .lesson-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .badge-indispensable {
+      background-color: #fee2e2;
+      color: #ef4444;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .lesson-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-left: 16px;
+    }
+
+    /* Bookmark Ribbon outline */
+    .bookmark-btn {
+      color: #9ca3af;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s ease;
+    }
+
+    .bookmark-btn:hover {
+      color: #4b5563;
+    }
+
+    .bookmark-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Status Pills */
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: none;
+      color: white;
+      min-width: 110px;
+      justify-content: space-between;
+    }
+
+    .status-pill.completed {
+      background-color: #10b981;
+    }
+
+    .status-pill.inprogress {
+      background-color: #f59e0b;
+    }
+
+    .status-pill svg {
+      width: 12px;
+      height: 12px;
+      fill: currentColor;
+    }
+
+    /* Bottom footer/back button */
+    .footer-nav {
+      margin-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-to-blocs {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.15s ease;
+    }
+
+    .back-to-blocs:hover {
+      color: var(--purple-primary);
+    }
+
+    .back-to-blocs svg {
+      width: 16px;
+      height: 16px;
+    }
   </style>
 </head>
 <body>
-  <main>
-    <header>
-      <h1>Révisions Supply Chain</h1>
-      <p>Choisissez un thème pour réviser avec des fiches interactives.</p>
-    </header>
-    <section class="grid" aria-label="Thèmes de révision">
-      <a class="card" href="veille-strategique-supply-chain.html">
-        <span class="tag">Thème 1</span><h2>Veille stratégique Supply Chain</h2><span class="open">Ouvrir les fiches →</span>
-      </a>
-      <a class="card" href="signaux-faibles.html">
-        <span class="tag">Thème 2</span><h2>Signaux faibles et tendances structurantes</h2><span class="open">Ouvrir les fiches →</span>
-      </a>
-      <a class="card" href="collecte-veille.html">
-        <span class="tag">Thème 3</span><h2>Collecte, qualification et exploitation des données de veille</h2><span class="open">Ouvrir les fiches →</span>
-      </a>
-      <a class="card" href="analyse-concurrentielle.html">
-        <span class="tag">Thème 4</span><h2>Analyse concurrentielle et positionnement stratégique</h2><span class="open">Ouvrir les fiches →</span>
-      </a>
+
+  <div class="container">
+    
+    <!-- Header Context -->
+    <div class="bloc-header">
+      <div class="bloc-title-small">BLOC 3 - Conduire les projets de transformation et de résilience de la chaîne logistique</div>
+      <div class="bloc-title-main">Piloter la veille stratégique et prospective de la chaîne logistique</div>
+    </div>
+
+    <!-- Main Section with Theme and Lessons -->
+    <section class="theme-section">
+      
+      <!-- Theme Title & Progress Block -->
+      <div class="theme-header">
+        <div class="theme-info-wrapper">
+          <!-- Circular Progress -->
+          <div class="progress-circle-container">
+            <svg class="progress-circle-svg" viewBox="0 0 60 60">
+              <circle class="progress-circle-bg" cx="30" cy="30" r="25" />
+              <circle class="progress-circle-bar" cx="30" cy="30" r="25" />
+            </svg>
+            <div class="progress-center-icon">
+              <!-- Grid/List icon inside purple circle -->
+              <svg viewBox="0 0 24 24">
+                <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="theme-title-area">
+            <h1 class="theme-title">Piloter la veille stratégique et prospective de la chaîne logistique</h1>
+            <div class="theme-progress-text"><span>4/6</span> ressources terminées</div>
+          </div>
+        </div>
+
+        <div class="theme-meta-right">
+          À partir du 07/10/2026
+        </div>
+      </div>
+
+      <!-- Lessons Grid/List in exact order -->
+      <div class="lessons-list">
+        
+        <!-- Lesson 1 -->
+        <a href="veille-strategique-supply-chain.html" class="lesson-row">
+          <div class="lesson-left">
+            <div class="icon-circle purple">
+              <!-- Book/lesson icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </div>
+            <div class="lesson-details">
+              <h2 class="lesson-title">Les fondements d'un dispositif de veille stratégique en supply chain</h2>
+              <div class="lesson-meta">
+                <span>Leçon</span>
+                <span>•</span>
+                <span>Pas de durée</span>
+                <span class="badge-indispensable">Indispensable</span>
+              </div>
+            </div>
+          </div>
+          <div class="lesson-right">
+            <button class="bookmark-btn" type="button" aria-label="Favori">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </button>
+            <span class="status-pill completed">
+              Terminé
+              <svg viewBox="0 0 24 24"><path d="M19 9l-7 7-3-3" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Lesson 2 -->
+        <a href="collecte-veille.html" class="lesson-row">
+          <div class="lesson-left">
+            <div class="icon-circle green">
+              <!-- Checkmark icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <div class="lesson-details">
+              <h2 class="lesson-title">La collecte, la qualification et l'exploitation des données de veille</h2>
+              <div class="lesson-meta">
+                <span>Leçon</span>
+                <span>•</span>
+                <span>Pas de durée</span>
+                <span class="badge-indispensable">Indispensable</span>
+              </div>
+            </div>
+          </div>
+          <div class="lesson-right">
+            <button class="bookmark-btn" type="button" aria-label="Favori">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </button>
+            <span class="status-pill completed">
+              Terminé
+              <svg viewBox="0 0 24 24"><path d="M19 9l-7 7-3-3" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Lesson 3 -->
+        <a href="analyse-concurrentielle.html" class="lesson-row">
+          <div class="lesson-left">
+            <div class="icon-circle green">
+              <!-- Checkmark icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <div class="lesson-details">
+              <h2 class="lesson-title">L'analyse concurrentielle et le positionnement stratégique de la supply chain</h2>
+              <div class="lesson-meta">
+                <span>Leçon</span>
+                <span>•</span>
+                <span>Pas de durée</span>
+                <span class="badge-indispensable">Indispensable</span>
+              </div>
+            </div>
+          </div>
+          <div class="lesson-right">
+            <button class="bookmark-btn" type="button" aria-label="Favori">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </button>
+            <span class="status-pill completed">
+              Terminé
+              <svg viewBox="0 0 24 24"><path d="M19 9l-7 7-3-3" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Lesson 4 -->
+        <a href="signaux-faibles.html" class="lesson-row">
+          <div class="lesson-left">
+            <div class="icon-circle green">
+              <!-- Checkmark icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <div class="lesson-details">
+              <h2 class="lesson-title">La détection des signaux faibles et des tendances structurantes</h2>
+              <div class="lesson-meta">
+                <span>Leçon</span>
+                <span>•</span>
+                <span>Pas de durée</span>
+                <span class="badge-indispensable">Indispensable</span>
+              </div>
+            </div>
+          </div>
+          <div class="lesson-right">
+            <button class="bookmark-btn" type="button" aria-label="Favori">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </button>
+            <span class="status-pill completed">
+              Terminé
+              <svg viewBox="0 0 24 24"><path d="M19 9l-7 7-3-3" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Lesson 5 -->
+        <a href="evaluation-strategique-risques.html" class="lesson-row">
+          <div class="lesson-left">
+            <div class="icon-circle dark">
+              <!-- Book icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </div>
+            <div class="lesson-details">
+              <h2 class="lesson-title">L'évaluation stratégique des risques et opportunités pour la supply chain</h2>
+              <div class="lesson-meta">
+                <span>Leçon</span>
+                <span>•</span>
+                <span>Pas de durée</span>
+                <span class="badge-indispensable">Indispensable</span>
+              </div>
+            </div>
+          </div>
+          <div class="lesson-right">
+            <button class="bookmark-btn" type="button" aria-label="Favori">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </button>
+            <span class="status-pill inprogress">
+              En cours
+              <svg viewBox="0 0 24 24"><path d="M19 9l-7 7-3-3" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Lesson 6 -->
+        <a href="#" class="lesson-row" onclick="alert('Ce module d\'application sera bientôt disponible !'); return false;">
+          <div class="lesson-left">
+            <div class="icon-circle dark">
+              <!-- Book icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </div>
+            <div class="lesson-details">
+              <h2 class="lesson-title">Application - Piloter la veille stratégique et prospective de la chaîne logistique</h2>
+              <div class="lesson-meta">
+                <span>Leçon</span>
+                <span>•</span>
+                <span>Pas de durée</span>
+                <span class="badge-indispensable">Indispensable</span>
+              </div>
+            </div>
+          </div>
+          <div class="lesson-right">
+            <button class="bookmark-btn" type="button" aria-label="Favori">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </button>
+            <span class="status-pill inprogress">
+              En cours
+              <svg viewBox="0 0 24 24"><path d="M19 9l-7 7-3-3" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </a>
+
+      </div>
+
     </section>
-    <footer>Fiches de révision Supply Chain</footer>
-  </main>
+
+    <!-- Navigation Footer -->
+    <div class="footer-nav">
+      <a href="#" class="back-to-blocs" onclick="alert('Retour aux blocs de compétences...'); return false;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Retour aux Blocs
+      </a>
+    </div>
+
+  </div>
+
 </body>
 </html>
